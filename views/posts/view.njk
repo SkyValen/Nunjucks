@@ -1,0 +1,40 @@
+{% extends 'partials/layout.njk' %}
+{% block title %}View Post{% endblock %}
+{% block content %}
+<style>
+    .table-style{
+        font-size: 75%;
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<form action="/posts/view/{{post.id}}" method="POST">
+<table class="table table-style">
+    <tbody>
+        <tr>
+            <th scope="row" class="font-weight-bold">ID</th>
+            <td>{{post.id}}</td>
+        </tr>
+        <tr>
+            <th scope="row" class="font-weight-bold">Title</th>
+            <td>{{post.title}}</td>
+        </tr>
+        <div class="w-75">
+        <tr>
+            <th scope="row" class="font-weight-bold">Content</th>
+            <td>{{post.body}}</td>
+        </tr>
+        </div>
+        <tr>
+            <th scope="row" class="font-weight-bold">createdAt</th>
+            <td>{{post.createdAt}}</td>
+        </tr>
+        <tr>
+            <th scope="row" class="font-weight-bold">updatedAt</th>
+            <td>{{post.updatedAt}}</td>
+        </tr>
+    </tbody>
+</table>
+</form>
+{% endblock %}

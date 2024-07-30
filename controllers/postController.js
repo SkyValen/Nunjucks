@@ -43,6 +43,19 @@ router.post('/edit/:id', async (req, res) => {
     res.redirect('/posts');
 });
 
+router.get('/view/:id', async (req, res) => {
+    const post = await db.Post.findByPk(req.params.id);
+    res.render('posts/view.njk', {post});
+});
+
+router.post('/view/:id', async (req, res) => {
+    const post = await db.Post.findByPk(req.params.id);
+    post.title = req.body.title;
+    post.body = req.body.body;
+    post.save();
+    res.redirect('/posts');
+});
+
 router.get('/delete/:id', async (req, res) => {
     const post = await db.Post.findByPk(req.params.id);
     post.destroy();
